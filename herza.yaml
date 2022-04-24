@@ -1,0 +1,75 @@
+proxies:
+- name: Trojan GFW (SNI)
+  type: trojan
+  server: 103.152.118.155
+  port: 443
+  password: eef46d87-ae46-d801-e0d4-6c87ae46d801
+  udp: true
+  sni: v27.tiktokcdn.com
+  skip-cert-verify: true
+- name: Trojan WS (CDN)
+  server: 103.152.118.155
+  port: 443
+  type: trojan
+  password: eef46d87-ae46-d801-e0d4-6c87ae46d801
+  skip-cert-verify: true
+  sni: v27.tiktokcdn.com
+  network: ws
+  ws-opts:
+    path: /trojanws
+    headers:
+      Host: v27.tiktokcdn.com
+  udp: true
+- name: Vmess WS (SNI)
+  type: vmess
+  server: 103.152.118.155
+  port: 443
+  uuid: eef46d87-ae46-d801-e0d4-6c87ae46d801
+  alterId: 0
+  cipher: auto
+  udp: true
+  tls: true
+  skip-cert-verify: true
+  servername: v27.tiktokcdn.com
+  network: ws
+  ws-opts:
+    path: /vmessws
+    headers:
+      Host: v27.tiktokcdn.com
+- name: Vless WS (SNI)
+  server: 103.152.118.155
+  port: 443
+  type: vless
+  uuid: eef46d87-ae46-d801-e0d4-6c87ae46d801
+  cipher: auto
+  tls: true
+  skip-cert-verify: true
+  servername: v27.tiktokcdn.com
+  network: ws
+  ws-opts:
+    path: /vlessws
+    headers:
+      Host: v27.tiktokcdn.com
+- name: Vless XTLS (SNI)
+  server: 103.152.118.155
+  port: 443
+  type: vless
+  uuid: eef46d87-ae46-d801-e0d4-6c87ae46d801
+  cipher: auto
+  tls: true
+  flow: xtls-rprx-direct
+  skip-cert-verify: true
+  servername: v27.tiktokcdn.com
+- name: Vless gRPC (SNI)
+  server: 103.152.118.155
+  port: 80
+  type: vless
+  uuid: eef46d87-ae46-d801-e0d4-6c87ae46d801
+  cipher: auto
+  tls: true
+  skip-cert-verify: true
+  servername: v27.tiktokcdn.com
+  network: grpc
+  grpc-opts:
+    grpc-service-name: vless-grpc
+  udp: true
